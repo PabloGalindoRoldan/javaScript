@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// PALETA DE COLORES
+
+$color1: #fff;
+$color2: #000;
+$color3: #fff;
+$color4: #fff;
+$color5: #fff;
+$color6: #fff;
+
+// HOME
+
+.mainHeader{
+    height: 10vh;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: aquamarine;
+    align-items: center;
+}
+
+.logoContainer{
+    height: auto;
+    width: 30%;
+    padding: 20px;
+}
+
+.navbarContainer{
+    height: auto;
+    width: 70%;
+    ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        a{
+            padding: 20px;
+        }
+    }
+}
+
+.section1{
+    height: 100vh;
+}
+
+.section1TextContainer{
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin: 15%;
+}
+
+.tarjeta{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 5%;
+}
+
+.tarjetaContenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.section3{
+    height: 50vh;
+    h2 { 
+        text-align: center;
+    }
+}
+
+footer{
+    height: 10vh;
+    background-color: aquamarine;
+    text-align: center;
+}
+

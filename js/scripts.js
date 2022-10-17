@@ -72,13 +72,16 @@ function repregunta() {
     let formulacion = prompt(`¿Desea agregar algun otro item al carrito? (responder si/no)`);
     if (formulacion.toLowerCase() == "si"){
         compras();
-    } else {
+    } else if (formulacion.toLowerCase() == "no"){
         alert(`Gracias por comprar con nosotros. Usted selecciono:\n
         ${item1} = ${cantidad1} ;\n
         ${item2} = ${cantidad2} ;\n
         ${item3} = ${cantidad3} ;\n
         ${item4} = ${cantidad4} ;\n
-        el precio total es: $` + ((cantidad1 * precio1) + (cantidad2 * precio2) + (cantidad3 * precio3) + (cantidad4 * precio4)));
+        El precio total es: $` + ((cantidad1 * precio1) + (cantidad2 * precio2) + (cantidad3 * precio3) + (cantidad4 * precio4)));
+    } else {
+        alert(`Respuesta invalida`);
+        repregunta();
     }
 
 }

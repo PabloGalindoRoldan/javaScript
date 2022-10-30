@@ -157,7 +157,7 @@ function nuevoProducto(parametro){
     let ingresePrecio = ""
     precio()
         function precio(){
-            ingresePrecio = prompt("Ingrese el precio del producto")
+            ingresePrecio = parseInt(prompt("Ingrese el precio del producto"))
             if (isNaN(ingresePrecio)){
             alert("El precio solo puede ser expresado en numeros")
             precio()
@@ -263,8 +263,8 @@ function compras(array){
     }
     let pregunta = parseInt(prompt(`¿Qué item desea agregar al carrito?:\n${catalogoReducido}`))
 
-    if(array[pregunta]){
-    array[pregunta].cantidad++
+    if(array[pregunta-1]){
+    array[pregunta-1].cantidad++
     alert("Agregado al carrito")
     } else {alert("numero invalido")}
     
@@ -282,7 +282,7 @@ function finalizarCompra(array){
             Variedad: ${elem.variedad}
             Precio: ${elem.precio}
             Cantidad: ${elem.cantidad}\n`
-            total += elem.precio
+            total += (elem.precio * elem.cantidad)
         }
     }
     alert(`Su compra es:\n
@@ -291,8 +291,6 @@ Y el precio total es: $${total}\n
 Muchas gracias y que tenga un buen dia!`)
     salir = true
 }
-
-
 
 //LLamo la funcion menu
 

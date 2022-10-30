@@ -135,6 +135,12 @@ function buscarProducto(array){
             (elemento) => elemento.precio == parseInt(busqueda)
         )
     } 
+
+    if (resultadoBusqueda == undefined){
+        resultadoBusqueda = array.find(
+            (elemento) => elemento.id == parseInt(busqueda)
+        )
+    } 
     
     if (resultadoBusqueda == undefined) {
         alert("No se encontro resultado que coincida con la busqueda")

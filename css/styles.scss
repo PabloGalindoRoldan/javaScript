@@ -6,80 +6,385 @@
 
 // PALETA DE COLORES
 
-$color1: #fff;
-$color2: #000;
-$color3: #fff;
-$color4: #fff;
-$color5: #fff;
+$color1: #754570;
+$color2: #F7DBF4;
+$color3: #F590EB;
+$color4: #756874;
+$color5: #C272BA;
 $color6: #fff;
+$color7: rgb(82, 80, 80);
+$color8: #f9ebf8;
+$title: 'Neucha', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+$text: 'Raleway','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+@mixin gradient1() {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(247, 219, 244, 1) 50%);
+}
+
+@mixin gradient2(){
+    background: rgb(255,255,255);
+    background: linear-gradient(79deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+}
 
 // HOME
 
-.mainHeader{
+.mainHeader {
     height: 10vh;
     width: auto;
     display: flex;
     flex-direction: row;
-    background-color: aquamarine;
     align-items: center;
-}
-
-.logoContainer{
-    height: auto;
-    width: 30%;
-    padding: 20px;
-}
-
-.navbarContainer{
-    height: auto;
-    width: 70%;
-    ul{
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
-        a{
-            padding: 20px;
-        }
+    @include gradient1;
+    justify-content: center;
+    .logoContainer{
+        display: none;
+    }
+    .navbar{
+        display: none;
     }
 }
 
-.section1{
+
+//HAMBURGUER MENU
+
+#menu__toggle {
+    opacity: 0;
+}
+
+#menu__toggle:checked+.menu__btn>span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked~.menu__box {
+    left: 0 !important;
+}
+
+.menu__btn {
+    position: fixed;
+    top: 55px;
+    left: 30px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+.btnCarrito{
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    // width: 26px;
+    // height: 26px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#btnCarrito2{
+    color: #754570;
+}
+
+.menu__box {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 100px 0;
+    list-style: none;
+    background-color: $color8;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+    justify-content: flex-start;
+    z-index: 2;
+}
+
+.menu__item {
+    display: block;
+    padding: 25px 70px;
+    color: #333;
+    font-family: $text;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+    width: 100%;
+    text-align: center;
+}
+
+#btnCarrito{
+    color: $color8;
+    background-color: #754570;
+    border-radius: 10px;
+    margin: 10%;
+    width: 80%;
+}
+
+.menu__item:hover {
+    background-color: $color1;
+    color: $color6;
+}
+
+.menu__item:active {
+    background-color: $color2;
+    color: $color1;
+}
+
+
+
+//TERMINA HAMBURGUER
+
+//Seccion1
+
+.section1 {
     height: 100vh;
+    background-image: url(../multimedia/flowers-g45ae5a556_1920.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
-.section1TextContainer{
+.section1TextContainer {
     display: inline-block;
+    text-align: center;
     height: auto;
-    width: auto;
-    margin: 15%;
+    width: 100%;
+    padding: 25% 10%;
+    h2{
+        color: $color6;
+        font-family: $title;
+        font-size: 80px;
+        text-shadow: 1px 2px 10px black;
+    }
+    p{
+        color: $color6;
+        font-family: $text;
+        text-shadow: -1px 0 10px black, 0 1px 10px black, 1px 0 10px black, 0 -1px 10px black;
+        font-size: 25px;
+        padding: 50% 0 0 0;
+    }
 }
 
-.tarjeta{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 5%;
-}
+//Termina seccion1
 
-.tarjetaContenido{
+//Seccion2
+
+.section2{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 }
 
-.section3{
+#section2{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.barraHerramientas{
+    display: flex;
+    flex-direction: column;
+    @include gradient1;
+    width: 100%;
+    height: auto;
+    font-family: $text;
+    margin: 0;
+    padding: 20px;
+
+    h2{
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid $color1;
+        border-bottom: 1px solid $color1;
+    }
+    
+    h3{
+        padding: 20px;
+    }
+
+    .formDiv{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding: 2px 20px;
+    }
+    .btnAgregar{
+        border: 0;
+        border-radius: 5px;
+        width: 50%;
+        align-self: center;
+        margin: 20px;
+        height: 40px;
+        background-color: $color1;
+        color:$color6;
+        transition: 0.25s;
+    }
+
+    .btnAgregar:active{
+        background-color: #795c76;
+    }
+
+    .btnAgregar:hover{
+        opacity: 0.8;
+    }
+}
+
+
+
+.divBuscar, .divTitulo, .divEliminar{
+    border-top: 1px solid $color1;
+}
+
+.divBotones{
+    border-bottom: 1px solid $color1;
+}
+
+.divOrdenar{
+    display: flex;
+    flex-direction: column;
+}
+
+.divBuscar, .divBotones{
+    padding-bottom: 5%;
+}
+
+.divTitulo{
+    text-align: center;
+}
+
+.divBotones{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.divEliminar{
+    display: flex;
+    flex-direction: column;
+}
+
+#eliminar{
+    @extend .btnAgregar;
+}
+
+.btnOrdenar{
+    border: 0;
+    border-radius: 5px;
+    width: 90%;
+    align-self: center;
+    height: 40px;
+    background-color: $color1;
+    color:$color6;
+    font-size: 12px;
+    transition: 0.25s;
+}
+
+.btnOrdenar:active{
+    background-color: #795c76;
+}
+
+.btnOrdenar:hover{
+    opacity: 0.8;
+}
+
+
+.card{
+    width: 80%;
+    font-family: $text;
+    z-index: 1;
+
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .card-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h4{
+            text-align: center;
+            padding: 5px;
+            margin: 0;
+        }
+        p{
+            text-align: center;
+            padding: 5px;
+            margin: 0;
+        }
+        button{
+            align-self: center;
+            margin: 5px;
+        }
+    }
+}
+
+#divCompra{
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: $text;
+font-weight: 800;
+color: $color7;
+border: 1px solid $color1;
+    p{
+        margin: 0;
+    }
+}
+//Termina seccion2
+
+//Seccion3
+.section3 {
     height: 50vh;
-    h2 { 
+    h2 {
         text-align: center;
     }
 }
 
-footer{
+//Termina Seccion3
+
+//Footer
+
+footer {
     height: 10vh;
-    background-color: aquamarine;
+    @include gradient1;
     text-align: center;
 }
 
+//Termina Footer

@@ -1,67 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Raleway:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <title>Vegania</title>
 </head>
+
 <body>
     <main>
         <header class="mainHeader">
             <div class="logoContainer">
-                <h1>Logogoeshere</h1>
+                <p>Logogoeshere</p>
             </div>
             <div class="navbarContainer">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="./pages/contacto.html">Contacto</a></li>
+                        <button>Carrito</button>
+                    </ul>
+                </nav>
+                <div class="hamburger-menu">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                    <button type="button" id="btnCarrito2" class="btn btn-outline-secondary btnCarrito" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <span></span>
+                    </label>
+                    <ul class="menu__box">
+                        <li><a class="menu__item" href="#">Inicio</a></li>
+                        <li><a class="menu__item" href="./pages/contacto.html">Contacto</a></li>
+                        <li><button type="button" id="btnCarrito" class="btn btn-primary menu__item" data-bs-toggle="modal" data-bs-target="#exampleModal">Carrito <button></li>
+                    </ul>
+                </div>
             </div>
         </header>
         <section class="section1">
             <div class="section1TextContainer">
-                <h2>Vegania productos</h2>
-                <p>descripcion de los productos e imagen de fondo</p>
+                <h2>VEGANIA</h2>
+                <p>Productos para el cuidado de la piel</p>
             </div>
         </section>
         <section class="section2">
-            <div class="tarjeta">
-                <section class="tarjetaContenido" id="consultaindex">
-                    <div class="imgWrapper">
-                        <img class="tarjetaImg" src="./multimedia/stock1.jpg" alt="img producto1">
+            <div class="barraHerramientas">
+                <h2>Herramientas</h2>
+                <h3>Agregar Producto:</h3>
+                <div class="formDiv">
+                    <span>Nombre</span>
+                    <input type="text" class="input" name="nombre" id="inputNombre">
+                </div>
+                <div class="formDiv">
+                    <span>Tipo</span>
+                    <input type="text" class="input" name="tipo" id="inputTipo">
+                </div>
+                <div class="formDiv">
+                    <span>Variedad</span>
+                    <input type="text" class="input" name="variedad" id="inputVariedad">
+                </div>
+                <div class="formDiv">
+                    <span>Precio</span>
+                    <input type="text" class="input" name="precio" id="inputPrecio">
+                </div>
+                <button class="btnAgregar" id="nuevoProducto">Agregar</button>
+                <div class="divBuscar">
+                    <h3>Buscar</h3>
+                    <input type="text" id="buscador" placeholder="Buscar">
+                    <div id="resultadoTexto"></div>
+                </div>
+                <div class="divEliminar">
+                    <h3>Eliminar - Ingrese ID del producto a eliminar del catálogo</h3>
+                    <input type="text" id="eliminador" placeholder="Ingrese ID">
+                    <button id="eliminar">Eliminar</button>
+                </div>
+                <div class="divOrdenar">
+                    <div class="divTitulo">
+                        <h3>Ordenar</h3>
                     </div>
-                    <span class="tarjetaTexto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, praesentium!</span>
-                    <span class="tarjetaPrecio">$1500</span>
-                    <a href="#"><button class="button">Agregar</button></a>
-                </section>
-                <section class="tarjetaContenido" id="cotizacionindex">
-                    <div class="imgWrapper">
-                        <img class="tarjetaImg" src="./multimedia/stock2.jpg" alt="img img producto2">
+                    <div class="divBotones">
+                        <button class="btnOrdenar" id="ordenarId">Id</button>
+                        <button class="btnOrdenar" id="ordenarNombre">Nombre</button>
+                        <button class="btnOrdenar" id="ordenarMenorPrecio">Menor Precio</button>
+                        <button class="btnOrdenar" id="ordenarMayorPrecio">MayorPrecio</button>
                     </div>
-                    <span class="tarjetaTexto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, possimus.</span>
-                    <span class="tarjetaPrecio">$2000</span>
-                    <a href="#"><button class="button">Agregar</button></a>
-                </section>
-                <section class="tarjetaContenido" id="patrocinioindex">
-                    <div class="imgWrapper">
-                        <img class="tarjetaImg" src="./multimedia/stock3.jpg" alt="img img producto3">
-                    </div>
-                    <span class="tarjetaTexto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, repellendus!</span>
-                    <span class="tarjetaPrecio">$1200</span>
-                    <a href="#"><button class="button">Agregar</button></a>
-                </section>
+                </div>
             </div>
-        </section>
-        <section class="section3">
-        <h2>Aca va el carrito</h2>
+            <div id="section2">
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Su seleccion:</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="modalBodyCarrito">
+                            ...
+                        </div>
+                        <div id="divCompra" class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
-        <h2>This is a footer</h2>
+        <h2>Footer</h2>
     </footer>
-    <script src="./js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
 </body>
+
 </html>

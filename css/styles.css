@@ -45,7 +45,7 @@
 
 .menu__btn {
   position: fixed;
-  top: 55px;
+  top: 30px;
   left: 30px;
   width: 26px;
   height: 26px;
@@ -76,7 +76,7 @@
 
 .btnCarrito {
   position: fixed;
-  top: 40px;
+  top: 10px;
   right: 20px;
   cursor: pointer;
   z-index: 3;

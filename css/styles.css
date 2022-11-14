@@ -76,7 +76,7 @@
 
 .btnCarrito {
   position: fixed;
-  top: 10px;
+  top: 12px;
   right: 20px;
   cursor: pointer;
   z-index: 3;

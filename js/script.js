@@ -254,5 +254,4 @@ function compraTotal(array){
     acumulador == 0 ? divCompra.innerHTML = `No hay productos en el carrito`: divCompra.innerHTML = `<p class="totalCompraTexto">EL total de su compra es $${acumulador}</p>`
 }
 
-
 mostrarCatalogo(eshop);

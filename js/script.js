@@ -202,15 +202,18 @@ if(localStorage.getItem("carrito")){
 //Agregar al carrito
 
 function agregarAlCarrito(producto) {
+    if (producto.cantidad == 0){
+    producto.cantidad++
     productosEnCarrito.push(producto)
-    console.log(productosEnCarrito)
-    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))}
+    else{producto.cantidad++
+        localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    }
 }
 
 function cargarProductosCarrito(array) {
     modalBodyCarrito.innerHTML = ""
     array.forEach((producto) => {
-        console.log(producto);
         modalBodyCarrito.innerHTML += `
         <div class="card" id="productoCarrito${producto.id}" style="width: 80%; margin: auto; margin-bottom: 5%;">
         <img src="./multimedia/stock1.jpg" class="card-img-top" alt="...">
@@ -219,11 +222,12 @@ function cargarProductosCarrito(array) {
             <h6 class="card-id">Nº ${producto.id}</h6>
             <p class="card-text">${producto.tipo}</p>
             <p class="card-text">Precio: $${producto.precio}</p>
+            <p class="card-text">Cantidad: ${producto.cantidad}</p>
             <button class= "btn btn-danger" id="botonEliminar${producto.id}">Eliminar</a>
         </div>
         </div>
         `
-        })
+    })
     array.forEach((producto) => {
     //capturo elemento del DOM
     document.getElementById(`botonEliminar${producto.id}`).addEventListener("click", () => {
@@ -234,17 +238,18 @@ function cargarProductosCarrito(array) {
         let ids = array.map(elem => elem.id)
         let indice = ids.indexOf(producto.id)
         if (indice != -1) {productosEnCarrito.splice(indice, 1)}
+        producto.cantidad = 0;
         localStorage.setItem('carrito', JSON.stringify(productosEnCarrito))
         //calculo compraTotal
         compraTotal(array)
         })
-    compraTotal(array)
     })
+    compraTotal(array)
 }
 
 function compraTotal(array){
     let acumulador = 0
-    acumulador = array.reduce((acc, productoCarrito)=>acc + productoCarrito.precio,0)
+    acumulador = array.reduce((acc, productoCarrito)=> acc + (productoCarrito.precio * productoCarrito.cantidad), 0)
     console.log(acumulador)
     acumulador == 0 ? divCompra.innerHTML = `No hay productos en el carrito`: divCompra.innerHTML = `<p class="totalCompraTexto">EL total de su compra es $${acumulador}</p>`
 }

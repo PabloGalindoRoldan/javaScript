@@ -218,8 +218,12 @@ if(localStorage.getItem("carrito")){
 
 function agregarAlCarrito(producto) {
     if (producto.cantidad == 0){
-    producto.cantidad++
     productosEnCarrito.push(producto)
+    for (elem of productosEnCarrito) {
+        if (elem.id == producto.id) {
+            elem.cantidad++;
+        }
+    }
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
     Toastify({
         text: `Agregado el producto ${producto.tipo} ${producto.nombre} al carrito.
@@ -231,10 +235,13 @@ function agregarAlCarrito(producto) {
         style: {
             background: "linear-gradient(to right, #754570, #C272BA)",
         }
-        }).showToast();
-
-} else {producto.cantidad++
-        console.log(productosEnCarrito)
+    }).showToast();
+} else {for (elem of productosEnCarrito) {
+        if (elem.id == producto.id) {
+            elem.cantidad++
+            producto.cantidad = elem.cantidad
+        }
+    }
         localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
         Toastify({
             text: `Agregado el producto ${producto.tipo} ${producto.nombre} al carrito.
@@ -277,8 +284,14 @@ function cargarProductosCarrito(array) {
         let ids = array.map(elem => elem.id)
         let indice = ids.indexOf(producto.id)
         if (indice != -1) {productosEnCarrito.splice(indice, 1)}
-        producto.cantidad = 0;
         localStorage.setItem('carrito', JSON.stringify(productosEnCarrito))
+        //seteo el eshop en 0
+        for (elemento of eshop){
+            if (elemento.id == producto.id) {
+                elemento.cantidad = 0;
+            }
+        }
+        localStorage.setItem("eshop", JSON.stringify(eshop))
         //calculo compraTotal
         compraTotal(array)
         })
@@ -289,7 +302,6 @@ function cargarProductosCarrito(array) {
 function compraTotal(array){
     let acumulador = 0
     acumulador = array.reduce((acc, productoCarrito)=> acc + (productoCarrito.precio * productoCarrito.cantidad), 0)
-    console.log(acumulador)
     acumulador == 0 ? divCompra.innerHTML = `No hay productos en el carrito`: divCompra.innerHTML = `<p class="totalCompraTexto">EL total de su compra es $${acumulador}</p>`
 }
 

@@ -33,8 +33,8 @@ const producto21 = new Producto(21, "Ultra Reafirmante - Neroli", "Crema Corpora
 const producto22 = new Producto(22, "Protector Solar 50FPS", "Crema Corporal", "250ml", 3500)
 const producto23 = new Producto(23, "Protector Solar 30FPS", "Crema Corporal", "250ml", 3500)
 
-
 let eshop = []
+
 
 //capturas DOM
 
@@ -54,7 +54,7 @@ let divCompra = document.getElementById("divCompra")
 let resultadoTexto = document.getElementById("resultadoTexto")
 
 
-//EVENTOS PROYECTO
+//EVENTOS
 
 btnNuevoProducto.addEventListener("click", () => { agregarNuevoProducto(eshop) })
 btnOrdenarId.addEventListener('click', () => { ordenarId(eshop) })
@@ -75,6 +75,7 @@ if (localStorage.getItem("eshop")) {
     eshop.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16, producto17, producto18, producto19, producto20, producto21, producto22, producto23)
     localStorage.setItem("eshop", JSON.stringify(eshop))
 }
+
 
 //Display catalogo
 
@@ -101,14 +102,22 @@ function mostrarCatalogo(array) {
     }
 }
 
+
 //Cargar nuevo producto
 
 function agregarNuevoProducto(array) {
-    //captura y utilización de input para crear nuevo objeto
     let inputNombre = document.getElementById("inputNombre")
     let inputTipo = document.getElementById("inputTipo")
     let inputVariedad = document.getElementById("inputVariedad")
     let inputPrecio = document.getElementById("inputPrecio")
+    if (inputNombre.value == "" || inputTipo.value == "" || inputVariedad.value == "" || inputPrecio.value == NaN){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor complete todos los campos. El precio solo admite numeros.',
+            timer: 3000
+        })
+    } else {
     array.sort((a, b) => a.id - b.id)
     let newArray = array.slice()
     let newId = newArray.pop().id + 1
@@ -116,11 +125,19 @@ function agregarNuevoProducto(array) {
     array.push(productoCreado)
     localStorage.setItem("eshop", JSON.stringify(array))
     mostrarCatalogo(array)
+    Swal.fire({
+        icon: 'success',
+        title: `Producto agregado con el numero de identificacion ${productoCreado.id}`,
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
     inputNombre.value = ""
     inputTipo.value = ""
     inputVariedad.value = ""
     inputPrecio.value = ""
 }
+
 
 //Funciones Ordenar
 
@@ -152,28 +169,12 @@ function ordenarNombre(array) {
     mostrarCatalogo(array)
 }
 
+
 //Funcion Buscador 
-
-// let arrayBuscador = []
-
-// function buscador(array) {
-
-//     let filtro = inputBuscador.value.toUpperCase();
-//     let resultadoBusqueda = array.filter((elem) => elem.nombre.toUpperCase() == filtro || elem.tipo.toUpperCase() == filtro || elem.variedad.toUpperCase() == filtro || elem.precio == parseInt(filtro))
-
-//     if (resultadoBusqueda == false) {
-//         mostrarCatalogo(eshop)
-//     }
-
-//     else {
-//         mostrarCatalogo(resultadoBusqueda)
-//     }
-//     arrayBuscador = []
-// }
 
 function buscador(buscado, array){
     resultadoTexto.innerHTML = ""
-let busqueda = array.filter(
+    let busqueda = array.filter(
     (elem) => elem.nombre.toLowerCase().includes(buscado.toLowerCase()) || elem.tipo.toLowerCase().includes(buscado.toLowerCase()) || elem.variedad.toLowerCase().includes(buscado.toLowerCase()) || [elem.precio].includes(parseInt(buscado)) || [elem.id].includes(parseInt(buscado)))
     busqueda.length == 0 ? (resultadoTexto.innerHTML = `<h3 class="text-success m-2">No hay coincidencias con su búsqueda... `)
     : (section2.innerHTML = "", mostrarCatalogo(busqueda))
@@ -184,7 +185,20 @@ let busqueda = array.filter(
 function removerProducto(array) {
     let ids = array.map(elem => elem.id)
     let indice = ids.indexOf(parseInt(inputEliminador.value))
-    if (indice != -1) { array.splice(indice, 1) }
+    if (indice != -1) { array.splice(indice, 1) 
+        Swal.fire({
+            icon: 'success',
+            title: `Producto Nº ${inputEliminador.value} removido`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El Nro de ID ingresado es invalido',
+        })
+    }
     localStorage.setItem("eshop", JSON.stringify(array))
     mostrarCatalogo(array)
 }
@@ -192,6 +206,7 @@ function removerProducto(array) {
 //------Carrito
 
 let productosEnCarrito = []
+
 if(localStorage.getItem("carrito")){
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
 }else{
@@ -205,10 +220,35 @@ function agregarAlCarrito(producto) {
     if (producto.cantidad == 0){
     producto.cantidad++
     productosEnCarrito.push(producto)
-    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))}
-    else{producto.cantidad++
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    Toastify({
+        text: `Agregado el producto ${producto.tipo} ${producto.nombre} al carrito.
+        Cantidad en carrito: ${producto.cantidad}`,
+        className: "info",
+        duration: 1500,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: "linear-gradient(to right, #754570, #C272BA)",
+        }
+        }).showToast();
+
+} else {producto.cantidad++
+        console.log(productosEnCarrito)
         localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+        Toastify({
+            text: `Agregado el producto ${producto.tipo} ${producto.nombre} al carrito.
+            Cantidad en carrito: ${producto.cantidad}`,
+            className: "info",
+            duration: 1500,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "linear-gradient(to right, #754570, #C272BA)",
+            }
+            }).showToast();
     }
+    localStorage.setItem("eshop", JSON.stringify(eshop))
 }
 
 function cargarProductosCarrito(array) {
@@ -229,7 +269,6 @@ function cargarProductosCarrito(array) {
         `
     })
     array.forEach((producto) => {
-    //capturo elemento del DOM
     document.getElementById(`botonEliminar${producto.id}`).addEventListener("click", () => {
         //Eliminar del DOM
         let cardProducto = document.getElementById(`productoCarrito${producto.id}`)

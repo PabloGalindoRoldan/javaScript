@@ -209,6 +209,10 @@ $text: 'Raleway','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida 
     justify-content: center;
 }
 
+#testing{
+    min-height: 100vh;
+}
+
 #section2{
     display: flex;
     flex-wrap: wrap;
@@ -216,6 +220,7 @@ $text: 'Raleway','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida 
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .barraHerramientas{

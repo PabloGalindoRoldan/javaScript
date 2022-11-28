@@ -52,6 +52,8 @@ let btnCarrito2 = document.getElementById("btnCarrito2")
 let modalBodyCarrito = document.getElementById("modalBodyCarrito")
 let divCompra = document.getElementById("divCompra")
 let resultadoTexto = document.getElementById("resultadoTexto")
+let loader = document.getElementById("loader")
+let btnFinalizarCompra = document.getElementById("btnFinalizarCompra")
 
 
 //EVENTOS
@@ -65,6 +67,7 @@ inputBuscador.addEventListener('input', () => { buscador(inputBuscador.value, es
 btnEliminador.addEventListener('click', () => { removerProducto(eshop) })
 btnCarrito.addEventListener("click", () => { cargarProductosCarrito(productosEnCarrito) })
 btnCarrito2.addEventListener("click", () => { cargarProductosCarrito(productosEnCarrito) })
+btnFinalizarCompra.addEventListener("click", () => {finalizarCompra(productosEnCarrito) })
 
 
 //CONDICIONAL PRIMER INGRESO
@@ -142,21 +145,42 @@ function agregarNuevoProducto(array) {
 //Funciones Ordenar
 
 function ordenarMenorMayor(array) {
+    section2.innerHTML = "<div id='testing'></div>"
+    section2.innerHTML = `<div class="d-flex align-items-center" id="loader">
+    <div class="spinner-border text-success ms-auto" role="status" aria-hidden="true"></div></div>`
     array.sort((a, b) => (a.precio - b.precio))
-    mostrarCatalogo(array)
+    setTimeout(()=>{
+        loader.innerHTML = ''
+        mostrarCatalogo(array)
+    }, 200)
 }
 
 function ordenarMayorMenor(array) {
+    section2.innerHTML = "<div id='testing'></div>"
+    section2.innerHTML = `<div class="d-flex align-items-center" id="loader">
+    <div class="spinner-border text-success ms-auto" role="status" aria-hidden="true"></div></div>`
     array.sort((a, b) => (b.precio - a.precio))
-    mostrarCatalogo(array)
+    setTimeout(()=>{
+        loader.innerHTML = ''
+        mostrarCatalogo(array)
+    }, 200)
 }
 
 function ordenarId(array) {
+    section2.innerHTML = "<div id='testing'></div>"
+    section2.innerHTML = `<div class="d-flex align-items-center" id="loader">
+    <div class="spinner-border text-success ms-auto" role="status" aria-hidden="true"></div></div>`
     array.sort((a, b) => (a.id - b.id))
-    mostrarCatalogo(array)
+    setTimeout(()=>{
+        loader.innerHTML = ''
+        mostrarCatalogo(array)
+    }, 200)
 }
 
 function ordenarNombre(array) {
+    section2.innerHTML = "<div id='testing'></div>"
+    section2.innerHTML = `<div class="d-flex align-items-center" id="loader">
+    <div class="spinner-border text-success ms-auto" role="status" aria-hidden="true"></div></div>`
     array.sort((a, b) => {
         if (a.nombre < b.nombre) {
             return -1;
@@ -166,7 +190,10 @@ function ordenarNombre(array) {
         }
         return 0;
     })
-    mostrarCatalogo(array)
+    setTimeout(()=>{
+        loader.innerHTML = ''
+        mostrarCatalogo(array)
+    }, 200)
 }
 
 
@@ -219,7 +246,7 @@ if(localStorage.getItem("carrito")){
 function agregarAlCarrito(producto) {
     if (producto.cantidad == 0){
     productosEnCarrito.push(producto)
-    for (elem of productosEnCarrito) {
+    for (let elem of productosEnCarrito) {
         if (elem.id == producto.id) {
             elem.cantidad++;
         }
@@ -236,7 +263,7 @@ function agregarAlCarrito(producto) {
             background: "linear-gradient(to right, #754570, #C272BA)",
         }
     }).showToast();
-} else {for (elem of productosEnCarrito) {
+} else {for (let elem of productosEnCarrito) {
         if (elem.id == producto.id) {
             elem.cantidad++
             producto.cantidad = elem.cantidad
@@ -305,4 +332,41 @@ function compraTotal(array){
     acumulador == 0 ? divCompra.innerHTML = `No hay productos en el carrito`: divCompra.innerHTML = `<p class="totalCompraTexto">EL total de su compra es $${acumulador}</p>`
 }
 
-mostrarCatalogo(eshop);
+//Funcion Finalizar Compra
+
+function finalizarCompra(){
+    if (productosEnCarrito == ""){
+        Swal.fire('No hay productos en el carrito')
+    } else {
+        Swal.fire({
+            title: 'Esta seguro?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Comprar',
+            confirmButtonColor: 'blue',
+            denyButtonText: `Volver`,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('Gracias por comprar con nosotros!', '', 'success')
+                productosEnCarrito.forEach((producto) => {
+                    let cardProducto = document.getElementById(`productoCarrito${producto.id}`)
+                    cardProducto.remove()})
+                productosEnCarrito = []
+                localStorage.setItem('carrito', JSON.stringify(productosEnCarrito))
+                compraTotal(productosEnCarrito)
+                eshop.forEach((elemento) => {
+                    elemento.cantidad = 0
+                })
+                localStorage.setItem("eshop", JSON.stringify(eshop))
+            } else if (result.isDenied) {
+                Swal.fire('No se ha efectuado la compra', '', 'info')
+            }
+            })
+    }
+}
+
+setTimeout(()=>{
+    loader.innerHTML = ""
+    mostrarCatalogo(eshop)
+}, 1000)
+

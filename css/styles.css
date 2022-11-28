@@ -170,6 +170,10 @@
   justify-content: center;
 }
 
+#testing {
+  min-height: 100vh;
+}
+
 #section2 {
   display: flex;
   flex-wrap: wrap;
@@ -177,6 +181,7 @@
   justify-content: center;
   gap: 20px;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .barraHerramientas {

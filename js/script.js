@@ -84,7 +84,7 @@ function mostrarCatalogo(array) {
                 <h4 class="card-title">${elem.nombre}</h4>
                 <p> Tipo: ${elem.tipo}</p>
                 <p> Variedad: ${elem.variedad}</p>
-                <p class="">Precio: ${elem.precio}</p>
+                <p class="">Precio: $${elem.precio}</p>
                 <button id="agregarBtn${elem.id}" class="btn btn-outline-success">Agregar al carrito</button>
             </div>
         </div>`

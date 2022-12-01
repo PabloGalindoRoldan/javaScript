@@ -394,7 +394,7 @@ footer {
   width: 60px;
   background-color: #754570;
   position: fixed;
-  bottom: 50px;
+  bottom: 120px;
   right: 50px;
   text-align: center;
   line-height: 60px;
@@ -407,20 +407,28 @@ footer {
   opacity: 0.95;
 }
 
+.up:hover {
+  color: #F7DBF4;
+}
+
 .up2 {
-  bottom: 260px;
+  bottom: 330px;
 }
 
 .up3 {
-  bottom: 190px;
+  bottom: 260px;
 }
 
 .up4 {
-  bottom: 120px;
+  bottom: 190px;
+}
+
+.up5 {
+  bottom: 50px;
 }
 
 #contactoSection2 {
-  min-height: 70vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -559,6 +567,9 @@ footer {
     padding: 0.5%;
   }
   .footerTexto {
-    padding: 1%;
+    padding: 0.5%;
+  }
+  #contactoSection2 {
+    min-height: 72vh;
   }
 }/*# sourceMappingURL=styles.css.map */

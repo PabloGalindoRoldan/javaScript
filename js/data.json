@@ -1,0 +1,209 @@
+[
+    {
+        "id": 1,
+        "nombre": "Vital Power",
+        "tipo": "Serum Facial",
+        "variedad": "30ml",
+        "precio": 2970,
+        "cantidad": 0,
+        "img": "img1.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Deep Luminous",
+        "tipo": "Serum Facial",
+        "variedad": "30ml",
+        "precio": 2970,
+        "cantidad": 0,
+        "img": "img2.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Glow Boost",
+        "tipo": "Serum Facial",
+        "variedad": "30ml",
+        "precio": 2080,
+        "cantidad": 0,
+        "img": "img3.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Acido Hyaluronico",
+        "tipo": "Serum Facial",
+        "variedad": "30ml",
+        "precio": 2080,
+        "cantidad": 0,
+        "img": "img4.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Plant Power",
+        "tipo": "Acondicionador",
+        "variedad": "400ml",
+        "precio": 2700,
+        "cantidad": 0,
+        "img": "img5.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Nutri Boost",
+        "tipo": "Shampoo",
+        "variedad": "400ml",
+        "precio": 2700,
+        "cantidad": 0,
+        "img": "img6.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Nutri Boost",
+        "tipo": "Acondicionador",
+        "variedad": "400ml",
+        "precio": 2700,
+        "cantidad": 0,
+        "img": "img7.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Plant Power",
+        "tipo": "Shampoo",
+        "variedad": "400ml",
+        "precio": 2700,
+        "cantidad": 0,
+        "img": "img8.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Refrescante Diario",
+        "tipo": "Toner Facial",
+        "variedad": "120ml",
+        "precio": 2970,
+        "cantidad": 0,
+        "img": "img9.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Balance Ph",
+        "tipo": "Toner Facial",
+        "variedad": "120ml",
+        "precio": 2970,
+        "cantidad": 0,
+        "img": "img10.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Antioxidante Nocturno",
+        "tipo": "Crema Facial",
+        "variedad": "100ml",
+        "precio": 1700,
+        "cantidad": 0,
+        "img": "img11.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "Ultra Vital Diurna",
+        "tipo": "Crema Facial",
+        "variedad": "100ml",
+        "precio": 1700,
+        "cantidad": 0,
+        "img": "img12.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "Limpieza Profunda",
+        "tipo": "Exfoliante",
+        "variedad": "500ml",
+        "precio": 3000,
+        "cantidad": 0,
+        "img": "img13.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Ultra Reafirmante - Coffe Berry",
+        "tipo": "Crema Corporal",
+        "variedad": "500ml",
+        "precio": 1500,
+        "cantidad": 0,
+        "img": "img14.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Ultra Reafirmante - Ginko Biloba",
+        "tipo": "Crema Corporal",
+        "variedad": "500ml",
+        "precio": 1500,
+        "cantidad": 0,
+        "img": "img15.jpg"
+    },
+    {
+        "id": 16,
+        "nombre": "Ultra Reafirmante - Coco",
+        "tipo": "Crema Corporal",
+        "variedad": "500ml",
+        "precio": 1500,
+        "cantidad": 0,
+        "img": "img16.jpg"
+    },
+    {
+        "id": 17,
+        "nombre": "Ultra Reafirmante - Neroli",
+        "tipo": "Crema Corporal",
+        "variedad": "500ml",
+        "precio": 1500,
+        "cantidad": 0,
+        "img": "img17.jpg"
+    },
+    {
+        "id": 18,
+        "nombre": "Ultra Reafirmante - Pera",
+        "tipo": "Crema Corporal",
+        "variedad": "300ml",
+        "precio": 1100,
+        "cantidad": 0,
+        "img": "img18.png"
+    },
+    {
+        "id": 19,
+        "nombre": "Ultra Reafirmante - Palta",
+        "tipo": "Crema Corporal",
+        "variedad": "300ml",
+        "precio": 1100,
+        "cantidad": 0,
+        "img": "img19.png"
+    },
+    {
+        "id": 20,
+        "nombre": "Ultra Reafirmante - Coco",
+        "tipo": "Crema Corporal",
+        "variedad": "300ml",
+        "precio": 1100,
+        "cantidad": 0,
+        "img": "img20.png"
+    },
+    {
+        "id": 21,
+        "nombre": "Ultra Reafirmante - Neroli",
+        "tipo": "Crema Corporal",
+        "variedad": "300ml",
+        "precio": 1100,
+        "cantidad": 0,
+        "img": "img21.png"
+    },
+    {
+        "id": 22,
+        "nombre": "Protector Solar 50FPS",
+        "tipo": "Crema Corporal",
+        "variedad": "250ml",
+        "precio": 3500,
+        "cantidad": 0,
+        "img": "img22.jpg"
+    },
+    {
+        "id": 23,
+        "nombre": "Protector Solar 30FPS",
+        "tipo": "Crema Corporal",
+        "variedad": "250ml",
+        "precio": 3500,
+        "cantidad": 0,
+        "img": "img23.jpg"
+    }
+]

@@ -194,6 +194,7 @@
   font-family: "Raleway", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 20px;
+  color: #754570;
 }
 .barraHerramientas h2 {
   text-align: center;
@@ -227,12 +228,51 @@
   opacity: 0.8;
 }
 
-.divBuscar, .divTitulo, .divEliminar {
+::-moz-placeholder {
+  color: #754570;
+  opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+  color: #754570;
+  opacity: 0.7;
+}
+
+::placeholder {
+  color: #754570;
+  opacity: 0.7;
+}
+
+input {
+  color: #754570;
+}
+
+input:focus {
+  outline-color: #754570;
+  font-weight: 600;
+}
+
+.divTitulo, .divEliminar {
   border-top: 1px solid #754570;
 }
 
-.divBotones {
+.divBuscar, .divOrdenar {
   border-bottom: 1px solid #754570;
+}
+
+.divBuscar {
+  display: flex;
+  padding: 5%;
+  align-items: center;
+  justify-content: center;
+}
+.divBuscar h3 {
+  margin: 0;
+  padding: 0 10% 0 0;
+}
+.divBuscar #buscador {
+  height: auto;
+  width: 50%;
 }
 
 .divOrdenar {
@@ -240,8 +280,10 @@
   flex-direction: column;
 }
 
-.divBuscar, .divBotones {
-  padding-bottom: 5%;
+#resultadoTextoOrdenar {
+  text-align: center;
+  margin: 0;
+  padding: 2%;
 }
 
 .divTitulo {
@@ -331,8 +373,192 @@
 }
 
 footer {
-  height: 10vh;
   background: rgb(255, 255, 255);
   background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(247, 219, 244) 50%);
   text-align: center;
+}
+
+.icons {
+  padding: 3%;
+}
+.icons a {
+  padding: 2%;
+}
+
+.footerTexto {
+  padding: 3%;
+}
+
+.up {
+  height: 60px;
+  width: 60px;
+  background-color: #754570;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  border-radius: 50%;
+  border: 2px solid #F7DBF4;
+  font-size: 18px;
+  z-index: 3;
+  display: none;
+  opacity: 0.95;
+}
+
+.up2 {
+  bottom: 260px;
+}
+
+.up3 {
+  bottom: 190px;
+}
+
+.up4 {
+  bottom: 120px;
+}
+
+#contactoSection2 {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #754570;
+}
+#contactoSection2 h2::before {
+  content: "<  ";
+  opacity: 0;
+  transition: 0.5s;
+}
+#contactoSection2 h2::after {
+  content: "  />";
+  opacity: 0;
+  transition: 0.5s;
+}
+#contactoSection2 h2:hover::before, #contactoSection2 h2:hover::after {
+  opacity: 100;
+}
+#contactoSection2 a img {
+  transition: 0.5s;
+}
+#contactoSection2 a:hover img {
+  transform: scale(1.05);
+}
+
+@media only screen and (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+  }
+  .mainHeader {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(247, 219, 244) 50%);
+    justify-content: flex-start;
+  }
+  .mainHeader .logoContainer {
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+  }
+  .mainHeader .logoContainer p {
+    font-family: "Neucha", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    font-weight: 800;
+    color: #754570;
+    letter-spacing: 3px;
+  }
+  .mainHeader .navbarContainer {
+    display: flex;
+    width: 75%;
+    height: 100%;
+  }
+  .mainHeader .navbarContainer .navbar {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 50%;
+  }
+  .mainHeader .navbarContainer .navbar ul {
+    display: grid;
+    width: 100%;
+    height: 80%;
+    height: auto;
+    margin: 0 20px 0 20px;
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .mainHeader .navbarContainer .navbar ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: "Raleway", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-weight: 700;
+  }
+  .mainHeader .navbarContainer .navbar ul li #btnCarrito3 {
+    color: #754570;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+  .mainHeader .navbarContainer .navbar ul li #btnCarrito3 i {
+    font-size: 18px;
+  }
+  .mainHeader .navbarContainer .navbar ul li #btnCarrito3:hover {
+    background-color: #754570;
+    color: #F7DBF4;
+  }
+  .mainHeader .navbarContainer .navbar ul li a {
+    color: #754570;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 10% 0 10% 0;
+    transition: 0.5s;
+    border-radius: 5px;
+  }
+  .mainHeader .navbarContainer .navbar ul li a:hover {
+    background-color: #754570;
+    color: #F7DBF4;
+  }
+  .section1TextContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+  .section1TextContainer h2 {
+    margin: 0;
+  }
+  .section1TextContainer p {
+    padding: 0 0 0 0;
+  }
+  .barraHerramientas {
+    padding: 0 20% 2% 20%;
+  }
+  .up {
+    display: block;
+  }
+  footer {
+    padding: 2%;
+  }
+  .icons {
+    padding: 1%;
+  }
+  .icons a {
+    padding: 0.5%;
+  }
+  .footerTexto {
+    padding: 1%;
+  }
 }/*# sourceMappingURL=styles.css.map */
